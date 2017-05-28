@@ -6,13 +6,19 @@ import constants
 
 
 def validate(entry_info):
-    condition_1 = validations.validate_alpha_only_string(entry_info[0])
-    condition_2 = validations.validate_alpha_only_string(entry_info[1])
-    condition_3 = validations.validate_num_only_string(entry_info[2])
-    condition_4 = validations.validate_num_only_string(entry_info[3])
+    condition_2 = validations.validate_alpha_only_string(entry_info[1].get())
+    condition_3 = validations.validate_num_only_string(entry_info[2].get())
+    condition_4 = validations.validate_num_only_string(entry_info[3].get())
 
-    if not (condition_1 and condition_2 and condition_3 and condition_4):
-        print
+    if not (condition_2 and condition_3 and condition_4):
+        if not condition_2:
+            return 2
+        if not condition_3:
+            return 3
+        if not condition_4:
+            return 4
+    else:
+        return 0
 
 
 def destroy_add_book_window(window):
@@ -20,8 +26,9 @@ def destroy_add_book_window(window):
 
 
 def add_to_db(entry_info, window):
-    if validate(entry_info):
-        print
+    validation_response = validate(entry_info)
+    if validation_response != 0:
+        errors.map_error(validation_response)
     destroy_add_book_window(window)
     return
 
