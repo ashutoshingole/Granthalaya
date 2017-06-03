@@ -11,7 +11,6 @@ def map_error(error_code):
         raise_price_error()
 
 
-
 def raise_author_error():
     tkMessageBox.showerror("Error", "Author name is incorrect")
 
@@ -22,3 +21,7 @@ def raise_isbn_error():
 
 def raise_price_error():
     tkMessageBox.showerror("Error", "Price is incorrect")
+
+
+def raise_book_exist_error():
+    tkMessageBox.showerror("Error", "Book Already Exist")

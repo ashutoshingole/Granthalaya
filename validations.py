@@ -1,4 +1,5 @@
 def validate_alpha_only_string(test_string):
+    test_string = test_string.replace(" ", "")
     return test_string.isalpha()
 
 
