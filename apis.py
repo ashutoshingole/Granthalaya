@@ -3,18 +3,19 @@ import json
 import os
 import requests
 import urllib
+import keys
+import parsing_json
+import parsing_xml
 
 
 def get_book_rating_and_info_and_genre(isbn):
 
-    url = "https://www.goodreads.com/book/review_counts.json?key=i2RVLibRXKLkwrd7fjyT9g&isbns="+isbn
+    url_1 = "https://www.goodreads.com/book/review_counts.json?key=" + keys.goodreads + "&isbns=" + isbn
 
-    response = requests.get(url)
-    json_data = json.loads(response.text)
-    goodreads_book_id = json_data['books'][0]['id']
-    goodreads_book_rating = json_data['books'][0]['average_rating']
+    response = requests.get(url_1)
+    goodreads_book_id, goodreads_book_rating = parsing_json.get_book_id_rating_from_json_response(response)
 
-    url_2 = "https://www.goodreads.com/book/show.xml?key=i2RVLibRXKLkwrd7fjyT9g&id="+str(goodreads_book_id)
+    url_2 = "https://www.goodreads.com/book/show.xml?key=" + keys.goodreads + "&id=" + str(goodreads_book_id)
 
     response_2 = requests.get(url_2)
     response_2_string = response_2.content
