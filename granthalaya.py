@@ -4,6 +4,9 @@ import appearance
 import buttons
 
 
+# _Author_ = 'Ashutosh Ingole'
+
+
 def main():
     window = Tkinter.Tk()
     window.wm_title("Granthalaya")

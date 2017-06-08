@@ -2,6 +2,8 @@ import Tkinter
 import actions
 
 
+# _Author_ = 'Ashutosh Ingole'
+
 def add_menu(window):
     menu_bar = Tkinter.Menu(window)
     file_menu = Tkinter.Menu(menu_bar, tearoff=0)

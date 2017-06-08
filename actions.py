@@ -8,6 +8,8 @@ import mysqldb
 from ScrolledText import *
 
 
+# _Author_ = 'Ashutosh Ingole'
+
 def on_select(evt):
     value = str(bookList.get(bookList.curselection()))
     bookInfo.config(state='normal')
